@@ -1,6 +1,8 @@
 // http://jsbin.com/xovifofaru/edit?css,js,console,output
 
 const FruitContainer = React.createClass({
+   
+    // Set initial state of fruit to empty array
     getInitialState(){
         return {
             fruits: []
@@ -9,7 +11,8 @@ const FruitContainer = React.createClass({
     componentDidMount(){
         let request = new XMLHttpRequest()
         let self = this
-
+	
+	// when request returns a result set state
         request.onreadystatechange = function(){
             if(request.readyState === 4 && request.status === 200){
                 let fruits = JSON.parse(request.responseText)
@@ -19,6 +22,7 @@ const FruitContainer = React.createClass({
             }
         }
 
+	// configure method and url via props.data string
         request.open("GET", this.props.data)
         request.send(null)
 
